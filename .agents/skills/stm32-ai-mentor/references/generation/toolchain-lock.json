@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "installation_strategy": "side_by_side",
+  "preserve_existing": {
+    "STM32CubeIDE": "1.19.0",
+    "STM32CubeProgrammer": "2.20.0-bundled-and-active",
+    "GNUArmToolchain": "13.3.1"
+  },
+  "machine_inventory": "%USERPROFILE%/AppData/Local/STM32AIMentor/config/tools.json",
+  "external_permission_policy": "%USERPROFILE%/AppData/Local/STM32AIMentor/config/permissions.json",
+  "tools": {
+    "STM32CubeIDE": {
+      "version": "2.2.0",
+      "status": "pending_vendor_consent_or_login",
+      "role": "optional_gui",
+      "source": "https://www.st.com/en/development-tools/stm32cubeide.html"
+    },
+    "STM32CubeMX": {
+      "version": "6.18.1",
+      "status": "installed_and_verified",
+      "role": "classic_ioc_generator",
+      "path": "C:/ST/STM32CubeMX_6.18.1/STM32CubeMX.exe",
+      "sha256": "DB4CA49EEA336B819EEDE7F2A1CEA19FFF65F2F435AEE35EFC54CE856B6FAE01",
+      "source": "https://www.st.com/en/development-tools/stm32cubemx.html"
+    },
+    "STM32CubeCLT": {
+      "version": "1.22.0",
+      "status": "installed_and_cli_verified",
+      "role": "headless_build_toolchain",
+      "path": "C:/ST/STM32CubeCLT_1.22.0",
+      "gcc_version": "14.3.1",
+      "cmake_version": "4.3.1",
+      "ninja_version": "1.13.2",
+      "source": "https://www.st.com/en/development-tools/stm32cubeclt.html"
+    },
+    "STM32CubeProgrammer": {
+      "version": "2.23.0",
+      "active_fallback": "2.20.0 bundled with preserved CubeIDE 1.19.0",
+      "status": "installed_and_cli_verified",
+      "role": "stlink_program_verify_reset",
+      "path": "C:/ST/STM32CubeProgrammer_2.23.0/bin/STM32_Programmer_CLI.exe",
+      "sha256": "269DB404ED3F2CDD7CFCCCC257AB0A907F2364C3D44E39EDAB6B007CB5F668ED",
+      "source": "https://www.st.com/en/development-tools/stm32cubeprog.html"
+    },
+    "STM32CubeF1": {
+      "version": "1.8.6",
+      "status": "detected_existing",
+      "role": "pinned_hal1_firmware_package",
+      "source": "https://www.st.com/en/embedded-software/stm32cubef1.html"
+    },
+    "KiCad": {
+      "version": "10.0.5",
+      "status": "installed_and_cli_verified",
+      "role": "authoritative_local_eda",
+      "source": "https://www.kicad.org/download/windows/"
+    },
+    "KiCadPythonIPC": {
+      "version": "0.7.1",
+      "status": "installed_in_dedicated_venv",
+      "role": "official_running_gui_ipc_binding",
+      "source": "https://pypi.org/project/kicad-python/"
+    },
+    "MCPPythonSDK": {
+      "version": "2.1.0",
+      "status": "installed_in_dedicated_venv",
+      "role": "local_stdio_servers",
+      "source": "https://github.com/modelcontextprotocol/python-sdk"
+    },
+    "pyserial": {
+      "version": "3.5",
+      "status": "installed_in_dedicated_venv",
+      "role": "bounded_serial_capture",
+      "source": "https://pypi.org/project/pyserial/"
+    },
+    "pytest": {
+      "version": "8.3.4",
+      "status": "installed_in_dedicated_venv",
+      "role": "host_and_contract_tests",
+      "source": "https://pypi.org/project/pytest/"
+    },
+    "CMake": {
+      "version": "4.4.2",
+      "status": "installed_in_dedicated_venv",
+      "role": "deterministic_build_driver",
+      "source": "https://pypi.org/project/cmake/"
+    },
+    "Ninja": {
+      "version": "1.13.0",
+      "status": "installed_in_dedicated_venv",
+      "role": "deterministic_build_executor",
+      "source": "https://pypi.org/project/ninja/"
+    },
+    "Unity": {
+      "version": "2.7.0",
+      "status": "installed_from_official_github_tag",
+      "role": "embedded_c_host_tests",
+      "source": "https://github.com/ThrowTheSwitch/Unity"
+    }
+  },
+  "optional_backends": {
+    "Flux": {
+      "endpoint": "https://app.flux.ai/mcp",
+      "authority": "advisory_only",
+      "status": "oauth_authenticated_in_codex_profile"
+    },
+    "Wokwi": {
+      "authority": "simulation_only"
+    },
+    "Renode": {
+      "authority": "simulation_only"
+    }
+  },
+  "policy": {
+    "automatic_uninstall": false,
+    "accept_vendor_licenses_automatically": false,
+    "upgrade_existing_projects_automatically": false,
+    "download_only_from_authoritative_sources": true,
+    "record_installer_sha256": true,
+    "secrets_outside_workspace": true
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/design-release.schema.json",
+  "title": "DesignRelease",
+  "description": "KiCad 权威设计发布及其 ERC、DRC、BOM、CAM 摘要引用。",
+  "type": "object",
+  "required": [
+    "design_release_id", "baseline_hash", "target_signature", "design_release_hash", "schematic_hash", "pcb_hash",
+    "erc_report_hash", "drc_report_hash", "parity_report_hash", "bom_hash", "render_hash", "cam_hashes", "status"
+  ],
+  "properties": {
+    "design_release_id": {"type": "string", "minLength": 1},
+    "baseline_hash": {"$ref": "#/$defs/sha256"},
+    "target_signature": {"$ref": "#/$defs/sha256"},
+    "design_release_hash": {"$ref": "#/$defs/sha256"},
+    "schematic_hash": {"$ref": "#/$defs/sha256"},
+    "pcb_hash": {"$ref": "#/$defs/sha256"},
+    "erc_report_hash": {"$ref": "#/$defs/sha256"},
+    "drc_report_hash": {"$ref": "#/$defs/sha256"},
+    "parity_report_hash": {"$ref": "#/$defs/sha256"},
+    "bom_hash": {"$ref": "#/$defs/sha256"},
+    "render_hash": {"$ref": "#/$defs/sha256"},
+    "cam_hashes": {
+      "type": "object", "required": ["gerber", "drill", "pnp", "step"],
+      "properties": {
+        "gerber": {"$ref": "#/$defs/sha256"}, "drill": {"$ref": "#/$defs/sha256"},
+        "pnp": {"$ref": "#/$defs/sha256"}, "step": {"$ref": "#/$defs/sha256"},
+        "layers": {"$ref": "#/$defs/sha256"}, "dfm_report": {"$ref": "#/$defs/sha256"},
+        "unresolved_issues": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "status": {"enum": ["draft", "reviewed", "released", "stale"]}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}},
+  "additionalProperties": false
+}

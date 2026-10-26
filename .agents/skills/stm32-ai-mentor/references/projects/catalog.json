@@ -1,0 +1,4499 @@
+{
+  "schema_version": "1.0",
+  "default_mcu": "STM32F103C8Tx",
+  "note": "目录共100项；其中30项具有V2深度项目模式（含既有P01–P15映射及15项固定模式），其余70项为目录候选。所有项目均禁止市电、高压、大功率电机、无保护锂电池、医疗或安全关键用途。",
+  "category_counts": {
+    "smart_home": 20,
+    "environment": 15,
+    "measurement": 15,
+    "mobility": 15,
+    "industrial": 15,
+    "energy_safety": 10,
+    "innovation": 10
+  },
+  "projects": [
+    {
+      "id": "device_status_light",
+      "title": "设备运行状态灯",
+      "category": "smart_home",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "设备上电后能一眼看出运行、故障和待机状态",
+      "expected_result": "完成设备运行状态灯，并能用自己的话解释GPIO 与断点调试在系统中的作用",
+      "knowledge": [
+        "GPIO 与断点调试",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "无"
+      ],
+      "prestudy_focus": [
+        "理解GPIO 与断点调试的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/device_status_light.md"
+      ]
+    },
+    {
+      "id": "doorbell_button_nightlight",
+      "title": "电子门铃/按键夜灯",
+      "category": "smart_home",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "按键触发提示音并在夜间点亮柔和灯光",
+      "expected_result": "完成电子门铃/按键夜灯，并能用自己的话解释EXTI 与消抖在系统中的作用",
+      "knowledge": [
+        "EXTI 与消抖",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "device_status_light"
+      ],
+      "prestudy_focus": [
+        "理解EXTI 与消抖的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/doorbell_button_nightlight.md"
+      ]
+    },
+    {
+      "id": "traffic_light_state_machine",
+      "title": "十字路口交通灯",
+      "category": "smart_home",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "用安全低压LED模拟路口信号并按时序切换",
+      "expected_result": "完成十字路口交通灯，并能用自己的话解释定时器与状态机在系统中的作用",
+      "knowledge": [
+        "定时器与状态机",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "doorbell_button_nightlight"
+      ],
+      "prestudy_focus": [
+        "理解定时器与状态机的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/traffic_light_state_machine.md"
+      ]
+    },
+    {
+      "id": "breathing_nightlight_buzzer",
+      "title": "呼吸夜灯与提示蜂鸣器",
+      "category": "smart_home",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "让灯光平滑呼吸并用蜂鸣器提示状态",
+      "expected_result": "完成呼吸夜灯与提示蜂鸣器，并能用自己的话解释PWM在系统中的作用",
+      "knowledge": [
+        "PWM",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "traffic_light_state_machine"
+      ],
+      "prestudy_focus": [
+        "理解PWM的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/breathing_nightlight_buzzer.md"
+      ]
+    },
+    {
+      "id": "smart_appliance_uart_console",
+      "title": "智能家电串口控制台",
+      "category": "smart_home",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "通过串口命令控制低压灯和提示器",
+      "expected_result": "完成智能家电串口控制台，并能用自己的话解释UART在系统中的作用",
+      "knowledge": [
+        "UART",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "breathing_nightlight_buzzer"
+      ],
+      "prestudy_focus": [
+        "理解UART的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/smart_appliance_uart_console.md"
+      ]
+    },
+    {
+      "id": "automatic_desk_lamp",
+      "title": "自动感光台灯",
+      "category": "environment",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "环境变暗时自动调节低压LED亮度",
+      "expected_result": "完成自动感光台灯，并能用自己的话解释ADC 与阈值控制在系统中的作用",
+      "knowledge": [
+        "ADC 与阈值控制",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "smart_appliance_uart_console"
+      ],
+      "prestudy_focus": [
+        "理解ADC 与阈值控制的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/automatic_desk_lamp.md"
+      ]
+    },
+    {
+      "id": "adc_dma_data_logger",
+      "title": "简易数据采集仪",
+      "category": "environment",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "连续采集光照/电位器数据并输出统计值",
+      "expected_result": "完成简易数据采集仪，并能用自己的话解释ADC + DMA在系统中的作用",
+      "knowledge": [
+        "ADC + DMA",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "automatic_desk_lamp"
+      ],
+      "prestudy_focus": [
+        "理解ADC + DMA的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/adc_dma_data_logger.md"
+      ]
+    },
+    {
+      "id": "desktop_temp_humidity_station",
+      "title": "桌面温湿度显示站",
+      "category": "measurement",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "在桌面实时显示温湿度和舒适提示",
+      "expected_result": "完成桌面温湿度显示站，并能用自己的话解释I2C、OLED、传感器在系统中的作用",
+      "knowledge": [
+        "I2C、OLED、传感器",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "adc_dma_data_logger"
+      ],
+      "prestudy_focus": [
+        "理解I2C、OLED、传感器的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/desktop_temp_humidity_station.md"
+      ]
+    },
+    {
+      "id": "spi_flash_settings",
+      "title": "设备设置掉电保存",
+      "category": "measurement",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "保存亮度、阈值等设置，重启后恢复",
+      "expected_result": "完成设备设置掉电保存，并能用自己的话解释SPI Flash在系统中的作用",
+      "knowledge": [
+        "SPI Flash",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "desktop_temp_humidity_station"
+      ],
+      "prestudy_focus": [
+        "理解SPI Flash的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/spi_flash_settings.md"
+      ]
+    },
+    {
+      "id": "rtc_low_power_logger",
+      "title": "电子时钟与低功耗记录器",
+      "category": "measurement",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "显示时间并周期性记录传感数据",
+      "expected_result": "完成电子时钟与低功耗记录器，并能用自己的话解释RTC、低功耗在系统中的作用",
+      "knowledge": [
+        "RTC、低功耗",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "spi_flash_settings"
+      ],
+      "prestudy_focus": [
+        "理解RTC、低功耗的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/rtc_low_power_logger.md"
+      ]
+    },
+    {
+      "id": "ultrasonic_parking_servo",
+      "title": "超声波泊车提示/自动感应装置",
+      "category": "mobility",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "距离变化触发蜂鸣频率或小舵机动作",
+      "expected_result": "完成超声波泊车提示/自动感应装置，并能用自己的话解释输入捕获、舵机在系统中的作用",
+      "knowledge": [
+        "输入捕获、舵机",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "rtc_low_power_logger"
+      ],
+      "prestudy_focus": [
+        "理解输入捕获、舵机的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/ultrasonic_parking_servo.md"
+      ]
+    },
+    {
+      "id": "smart_fan_pid",
+      "title": "智能风扇调速系统",
+      "category": "mobility",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "使用安全小风扇按温度或设定转速调速",
+      "expected_result": "完成智能风扇调速系统，并能用自己的话解释电机、编码器、PID在系统中的作用",
+      "knowledge": [
+        "电机、编码器、PID",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "ultrasonic_parking_servo"
+      ],
+      "prestudy_focus": [
+        "理解电机、编码器、PID的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/smart_fan_pid.md"
+      ]
+    },
+    {
+      "id": "can_vehicle_node",
+      "title": "车载节点通信模拟器",
+      "category": "industrial",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "两个低压节点交换状态和故障帧",
+      "expected_result": "完成车载节点通信模拟器，并能用自己的话解释CAN在系统中的作用",
+      "knowledge": [
+        "CAN",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "smart_fan_pid"
+      ],
+      "prestudy_focus": [
+        "理解CAN的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/can_vehicle_node.md"
+      ]
+    },
+    {
+      "id": "usb_cdc_sensor_meter",
+      "title": "USB虚拟串口传感仪表",
+      "category": "industrial",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "连接电脑后以虚拟串口读取传感数据",
+      "expected_result": "完成USB虚拟串口传感仪表，并能用自己的话解释USB CDC在系统中的作用",
+      "knowledge": [
+        "USB CDC",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "can_vehicle_node"
+      ],
+      "prestudy_focus": [
+        "理解USB CDC的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/usb_cdc_sensor_meter.md"
+      ]
+    },
+    {
+      "id": "freertos_environment_panel",
+      "title": "多任务家庭环境面板",
+      "category": "industrial",
+      "mode": "detailed",
+      "status": "ready-for-class",
+      "life_problem": "把采集、显示、告警拆成可观察任务",
+      "expected_result": "完成多任务家庭环境面板，并能用自己的话解释FreeRTOS在系统中的作用",
+      "knowledge": [
+        "FreeRTOS",
+        "HAL分层调用",
+        "安全验证与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics",
+        "usb_cdc_sensor_meter"
+      ],
+      "prestudy_focus": [
+        "理解FreeRTOS的信号流",
+        "预测一个接错或参数错误的现象"
+      ],
+      "core_components": [
+        "STM32F103C8Tx开发板",
+        "面包板与杜邦线",
+        "USB 3.3V/5V受控供电",
+        "按项目BOM补充器件"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门至基础",
+      "safety_level": "低",
+      "safety_gate": "先断电接线、确认3.3V逻辑与限流；不接市电/高压/无保护锂电池；外设电机类另有专门安全门",
+      "observable_acceptance": [
+        "构建成功且无警告性错误",
+        "按课堂检查点出现可观察现象",
+        "记录串口/测量/照片等证据"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档、配置与逻辑验证；无实板时不宣称硬件运行成功",
+      "validation_note": "本条为完整精讲项目契约，实际器件差异仍需课前确认",
+      "references": [
+        "curriculum/S0-S7.json",
+        "prestudy-handbook/template.md",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/freertos_environment_panel.md"
+      ]
+    },
+    {
+      "id": "smart_home-001",
+      "title": "门窗状态与离家提醒",
+      "category": "smart_home",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "离家前检测门窗是否关闭并在本地提示遗漏",
+      "expected_result": "完成“门窗状态与离家提醒”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "门窗状态与离家提醒的接口与状态机",
+        "门窗状态与离家提醒的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明门窗状态与离家提醒的输入输出和阈值",
+        "预测门窗状态与离家提醒的一个故障与停机措施"
+      ],
+      "core_components": [
+        "门磁开关",
+        "按键",
+        "限流LED",
+        "3.3V蜂鸣器"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "门磁只接3.3V；本机提示不替代安防系统，断电接线",
+      "observable_acceptance": [
+        "门磁闭合/断开各保持2秒后状态切换；离家键触发时有未关门窗即蜂鸣3次",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/smart_home-001.md"
+      ]
+    },
+    {
+      "id": "smart_home-002",
+      "title": "洗衣完成提示灯",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“洗衣完成提示灯”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“洗衣完成提示灯”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "洗衣完成提示灯的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别洗衣完成提示灯的输入、输出与失效模式",
+        "解释洗衣完成提示灯的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "洗衣完成提示灯专用3.3V输入模块",
+        "洗衣完成提示灯专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“洗衣完成提示灯”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“洗衣完成提示灯”的一次完整状态变化",
+        "记录“洗衣完成提示灯”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-003",
+      "title": "药盒定时提醒器",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“药盒定时提醒器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“药盒定时提醒器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "药盒定时提醒器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别药盒定时提醒器的输入、输出与失效模式",
+        "解释药盒定时提醒器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "药盒定时提醒器专用3.3V输入模块",
+        "药盒定时提醒器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90–120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“药盒定时提醒器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“药盒定时提醒器”的一次完整状态变化",
+        "记录“药盒定时提醒器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-004",
+      "title": "玄关人体感应灯",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“玄关人体感应灯”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“玄关人体感应灯”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "玄关人体感应灯的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别玄关人体感应灯的输入、输出与失效模式",
+        "解释玄关人体感应灯的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "玄关人体感应灯专用3.3V输入模块",
+        "玄关人体感应灯专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“玄关人体感应灯”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“玄关人体感应灯”的一次完整状态变化",
+        "记录“玄关人体感应灯”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-005",
+      "title": "桌面番茄钟",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“桌面番茄钟”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“桌面番茄钟”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "桌面番茄钟的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别桌面番茄钟的输入、输出与失效模式",
+        "解释桌面番茄钟的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "桌面番茄钟专用3.3V输入模块",
+        "桌面番茄钟专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "高",
+      "safety_gate": "“桌面番茄钟”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“桌面番茄钟”的一次完整状态变化",
+        "记录“桌面番茄钟”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "仅文档/逻辑；总线实机需另行验证",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-006",
+      "title": "窗帘位置指示器",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“窗帘位置指示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“窗帘位置指示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "窗帘位置指示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别窗帘位置指示器的输入、输出与失效模式",
+        "解释窗帘位置指示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "窗帘位置指示器专用3.3V输入模块",
+        "窗帘位置指示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“窗帘位置指示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“窗帘位置指示器”的一次完整状态变化",
+        "记录“窗帘位置指示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-007",
+      "title": "快递到达提示牌",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“快递到达提示牌”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“快递到达提示牌”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "快递到达提示牌的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别快递到达提示牌的输入、输出与失效模式",
+        "解释快递到达提示牌的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "快递到达提示牌专用3.3V输入模块",
+        "快递到达提示牌专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“快递到达提示牌”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“快递到达提示牌”的一次完整状态变化",
+        "记录“快递到达提示牌”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-008",
+      "title": "厨房计时器",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“厨房计时器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“厨房计时器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "厨房计时器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别厨房计时器的输入、输出与失效模式",
+        "解释厨房计时器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "厨房计时器专用3.3V输入模块",
+        "厨房计时器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“厨房计时器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“厨房计时器”的一次完整状态变化",
+        "记录“厨房计时器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-009",
+      "title": "鱼缸水位提示器",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“鱼缸水位提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“鱼缸水位提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "鱼缸水位提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别鱼缸水位提示器的输入、输出与失效模式",
+        "解释鱼缸水位提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "鱼缸水位提示器专用3.3V输入模块",
+        "鱼缸水位提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“鱼缸水位提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“鱼缸水位提示器”的一次完整状态变化",
+        "记录“鱼缸水位提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-010",
+      "title": "衣柜开门照明",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“衣柜开门照明”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“衣柜开门照明”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "衣柜开门照明的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别衣柜开门照明的输入、输出与失效模式",
+        "解释衣柜开门照明的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "衣柜开门照明专用3.3V输入模块",
+        "衣柜开门照明专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“衣柜开门照明”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“衣柜开门照明”的一次完整状态变化",
+        "记录“衣柜开门照明”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-011",
+      "title": "雨伞取用提醒器",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“雨伞取用提醒器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“雨伞取用提醒器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "雨伞取用提醒器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别雨伞取用提醒器的输入、输出与失效模式",
+        "解释雨伞取用提醒器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "雨伞取用提醒器专用3.3V输入模块",
+        "雨伞取用提醒器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90–120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“雨伞取用提醒器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“雨伞取用提醒器”的一次完整状态变化",
+        "记录“雨伞取用提醒器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-012",
+      "title": "书桌坐姿休息提醒器",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“书桌坐姿休息提醒器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“书桌坐姿休息提醒器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "书桌坐姿休息提醒器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别书桌坐姿休息提醒器的输入、输出与失效模式",
+        "解释书桌坐姿休息提醒器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "书桌坐姿休息提醒器专用3.3V输入模块",
+        "书桌坐姿休息提醒器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“书桌坐姿休息提醒器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“书桌坐姿休息提醒器”的一次完整状态变化",
+        "记录“书桌坐姿休息提醒器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-013",
+      "title": "宠物喂食提醒盒",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“宠物喂食提醒盒”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“宠物喂食提醒盒”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "宠物喂食提醒盒的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别宠物喂食提醒盒的输入、输出与失效模式",
+        "解释宠物喂食提醒盒的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "宠物喂食提醒盒专用3.3V输入模块",
+        "宠物喂食提醒盒专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "高",
+      "safety_gate": "“宠物喂食提醒盒”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“宠物喂食提醒盒”的一次完整状态变化",
+        "记录“宠物喂食提醒盒”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "仅文档/逻辑；总线实机需另行验证",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-014",
+      "title": "夜间起床路径灯",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“夜间起床路径灯”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“夜间起床路径灯”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "夜间起床路径灯的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别夜间起床路径灯的输入、输出与失效模式",
+        "解释夜间起床路径灯的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "夜间起床路径灯专用3.3V输入模块",
+        "夜间起床路径灯专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“夜间起床路径灯”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“夜间起床路径灯”的一次完整状态变化",
+        "记录“夜间起床路径灯”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "smart_home-015",
+      "title": "遥控器收纳提醒器",
+      "category": "smart_home",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“遥控器收纳提醒器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“遥控器收纳提醒器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "遥控器收纳提醒器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别遥控器收纳提醒器的输入、输出与失效模式",
+        "解释遥控器收纳提醒器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "遥控器收纳提醒器专用3.3V输入模块",
+        "遥控器收纳提醒器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“遥控器收纳提醒器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“遥控器收纳提醒器”的一次完整状态变化",
+        "记录“遥控器收纳提醒器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-016",
+      "title": "土壤湿度自动灌溉",
+      "category": "environment",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "在桌面盆栽模型中按湿度阈值短时驱动低压水泵",
+      "expected_result": "完成“土壤湿度自动灌溉”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "土壤湿度自动灌溉的接口与状态机",
+        "土壤湿度自动灌溉的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明土壤湿度自动灌溉的输入输出和阈值",
+        "预测土壤湿度自动灌溉的一个故障与停机措施"
+      ],
+      "core_components": [
+        "电容式土壤湿度模块",
+        "MOSFET驱动",
+        "5V微型水泵",
+        "续流二极管"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "水泵独立5V受限流供电并共地；禁止接市电水泵或无人值守灌溉",
+      "observable_acceptance": [
+        "湿度低于可覆写阈值持续10秒，水泵运行5秒后停机；干转立即停机",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/environment-016.md"
+      ]
+    },
+    {
+      "id": "environment-017",
+      "title": "空气质量与通风",
+      "category": "environment",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "读取空气质量模块的低压模拟/数字输出并提示人工通风",
+      "expected_result": "完成“空气质量与通风”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "空气质量与通风的接口与状态机",
+        "空气质量与通风的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明空气质量与通风的输入输出和阈值",
+        "预测空气质量与通风的一个故障与停机措施"
+      ],
+      "core_components": [
+        "空气质量传感模块",
+        "OLED",
+        "3.3V蜂鸣器",
+        "按键"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "只用于教学趋势，不能作为健康或燃气安全判断；禁止自动控制市电风机",
+      "observable_acceptance": [
+        "连续3次超过可覆写等级时显示通风提示；按键确认后静音",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/environment-017.md"
+      ]
+    },
+    {
+      "id": "environment-018",
+      "title": "室内CO2通风提示器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“室内CO2通风提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“室内CO2通风提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "室内CO2通风提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别室内CO2通风提示器的输入、输出与失效模式",
+        "解释室内CO2通风提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "室内CO2通风提示器专用3.3V输入模块",
+        "室内CO2通风提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“室内CO2通风提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“室内CO2通风提示器”的一次完整状态变化",
+        "记录“室内CO2通风提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-019",
+      "title": "窗台雨滴提醒器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“窗台雨滴提醒器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“窗台雨滴提醒器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "窗台雨滴提醒器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别窗台雨滴提醒器的输入、输出与失效模式",
+        "解释窗台雨滴提醒器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "窗台雨滴提醒器专用3.3V输入模块",
+        "窗台雨滴提醒器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“窗台雨滴提醒器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“窗台雨滴提醒器”的一次完整状态变化",
+        "记录“窗台雨滴提醒器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-020",
+      "title": "微型温室通风提示器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“微型温室通风提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“微型温室通风提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "微型温室通风提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别微型温室通风提示器的输入、输出与失效模式",
+        "解释微型温室通风提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "微型温室通风提示器专用3.3V输入模块",
+        "微型温室通风提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90–120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“微型温室通风提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“微型温室通风提示器”的一次完整状态变化",
+        "记录“微型温室通风提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-021",
+      "title": "冰箱温度记录标签",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“冰箱温度记录标签”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“冰箱温度记录标签”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "冰箱温度记录标签的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别冰箱温度记录标签的输入、输出与失效模式",
+        "解释冰箱温度记录标签的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "冰箱温度记录标签专用3.3V输入模块",
+        "冰箱温度记录标签专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“冰箱温度记录标签”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“冰箱温度记录标签”的一次完整状态变化",
+        "记录“冰箱温度记录标签”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-022",
+      "title": "教室噪声提示灯",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“教室噪声提示灯”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“教室噪声提示灯”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "教室噪声提示灯的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别教室噪声提示灯的输入、输出与失效模式",
+        "解释教室噪声提示灯的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "教室噪声提示灯专用3.3V输入模块",
+        "教室噪声提示灯专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "高",
+      "safety_gate": "“教室噪声提示灯”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“教室噪声提示灯”的一次完整状态变化",
+        "记录“教室噪声提示灯”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "仅文档/逻辑；总线实机需另行验证",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-023",
+      "title": "空气质量颜色指示器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“空气质量颜色指示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“空气质量颜色指示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "空气质量颜色指示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别空气质量颜色指示器的输入、输出与失效模式",
+        "解释空气质量颜色指示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "空气质量颜色指示器专用3.3V输入模块",
+        "空气质量颜色指示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“空气质量颜色指示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“空气质量颜色指示器”的一次完整状态变化",
+        "记录“空气质量颜色指示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-024",
+      "title": "垃圾桶满溢提示器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“垃圾桶满溢提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“垃圾桶满溢提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "垃圾桶满溢提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别垃圾桶满溢提示器的输入、输出与失效模式",
+        "解释垃圾桶满溢提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "垃圾桶满溢提示器专用3.3V输入模块",
+        "垃圾桶满溢提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“垃圾桶满溢提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“垃圾桶满溢提示器”的一次完整状态变化",
+        "记录“垃圾桶满溢提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-025",
+      "title": "饮水机滤芯计时器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“饮水机滤芯计时器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“饮水机滤芯计时器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "饮水机滤芯计时器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别饮水机滤芯计时器的输入、输出与失效模式",
+        "解释饮水机滤芯计时器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "饮水机滤芯计时器专用3.3V输入模块",
+        "饮水机滤芯计时器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“饮水机滤芯计时器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“饮水机滤芯计时器”的一次完整状态变化",
+        "记录“饮水机滤芯计时器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-026",
+      "title": "衣物晾晒干燥提示器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“衣物晾晒干燥提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“衣物晾晒干燥提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "衣物晾晒干燥提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别衣物晾晒干燥提示器的输入、输出与失效模式",
+        "解释衣物晾晒干燥提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "衣物晾晒干燥提示器专用3.3V输入模块",
+        "衣物晾晒干燥提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“衣物晾晒干燥提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“衣物晾晒干燥提示器”的一次完整状态变化",
+        "记录“衣物晾晒干燥提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-027",
+      "title": "猫砂盆环境提醒器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“猫砂盆环境提醒器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“猫砂盆环境提醒器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "猫砂盆环境提醒器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别猫砂盆环境提醒器的输入、输出与失效模式",
+        "解释猫砂盆环境提醒器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "猫砂盆环境提醒器专用3.3V输入模块",
+        "猫砂盆环境提醒器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“猫砂盆环境提醒器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“猫砂盆环境提醒器”的一次完整状态变化",
+        "记录“猫砂盆环境提醒器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "environment-028",
+      "title": "空调出风口温差记录器",
+      "category": "environment",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“空调出风口温差记录器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“空调出风口温差记录器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "空调出风口温差记录器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别空调出风口温差记录器的输入、输出与失效模式",
+        "解释空调出风口温差记录器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "空调出风口温差记录器专用3.3V输入模块",
+        "空调出风口温差记录器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90–120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“空调出风口温差记录器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“空调出风口温差记录器”的一次完整状态变化",
+        "记录“空调出风口温差记录器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-029",
+      "title": "低压直流电压电流功率记录",
+      "category": "measurement",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "记录受控低压直流回路的电压、电流和计算功率",
+      "expected_result": "完成“低压直流电压电流功率记录”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "低压直流电压电流功率记录的接口与状态机",
+        "低压直流电压电流功率记录的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明低压直流电压电流功率记录的输入输出和阈值",
+        "预测低压直流电压电流功率记录的一个故障与停机措施"
+      ],
+      "core_components": [
+        "INA219/同类低压电流模块",
+        "受保护5V负载",
+        "OLED"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "仅限受保护低压直流回路；禁止测量市电、裸露电池包或作为计费仪表",
+      "observable_acceptance": [
+        "每1秒输出一次电压、电流、功率；与万用表对照误差目标±5%（可覆写）",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/measurement-029.md"
+      ]
+    },
+    {
+      "id": "measurement-030",
+      "title": "电池盒电量指示器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“电池盒电量指示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“电池盒电量指示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "电池盒电量指示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别电池盒电量指示器的输入、输出与失效模式",
+        "解释电池盒电量指示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "电池盒电量指示器专用3.3V输入模块",
+        "电池盒电量指示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“电池盒电量指示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“电池盒电量指示器”的一次完整状态变化",
+        "记录“电池盒电量指示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-031",
+      "title": "电位器旋钮标尺",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“电位器旋钮标尺”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“电位器旋钮标尺”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "电位器旋钮标尺的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别电位器旋钮标尺的输入、输出与失效模式",
+        "解释电位器旋钮标尺的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "电位器旋钮标尺专用3.3V输入模块",
+        "电位器旋钮标尺专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“电位器旋钮标尺”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“电位器旋钮标尺”的一次完整状态变化",
+        "记录“电位器旋钮标尺”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-032",
+      "title": "简易电子秤信号查看器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“简易电子秤信号查看器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“简易电子秤信号查看器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "简易电子秤信号查看器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别简易电子秤信号查看器的输入、输出与失效模式",
+        "解释简易电子秤信号查看器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "简易电子秤信号查看器专用3.3V输入模块",
+        "简易电子秤信号查看器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“简易电子秤信号查看器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“简易电子秤信号查看器”的一次完整状态变化",
+        "记录“简易电子秤信号查看器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-033",
+      "title": "桌面噪声趋势记录器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“桌面噪声趋势记录器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“桌面噪声趋势记录器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "桌面噪声趋势记录器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别桌面噪声趋势记录器的输入、输出与失效模式",
+        "解释桌面噪声趋势记录器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "桌面噪声趋势记录器专用3.3V输入模块",
+        "桌面噪声趋势记录器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“桌面噪声趋势记录器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“桌面噪声趋势记录器”的一次完整状态变化",
+        "记录“桌面噪声趋势记录器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-034",
+      "title": "按键反应时间测试器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“按键反应时间测试器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“按键反应时间测试器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "按键反应时间测试器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别按键反应时间测试器的输入、输出与失效模式",
+        "解释按键反应时间测试器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "按键反应时间测试器专用3.3V输入模块",
+        "按键反应时间测试器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90–120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“按键反应时间测试器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“按键反应时间测试器”的一次完整状态变化",
+        "记录“按键反应时间测试器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-035",
+      "title": "频率计学习仪",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“频率计学习仪”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“频率计学习仪”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "频率计学习仪的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别频率计学习仪的输入、输出与失效模式",
+        "解释频率计学习仪的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "频率计学习仪专用3.3V输入模块",
+        "频率计学习仪专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“频率计学习仪”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“频率计学习仪”的一次完整状态变化",
+        "记录“频率计学习仪”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-036",
+      "title": "PWM占空比观察器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“PWM占空比观察器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“PWM占空比观察器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "PWM占空比观察器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别PWM占空比观察器的输入、输出与失效模式",
+        "解释PWM占空比观察器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "PWM占空比观察器专用3.3V输入模块",
+        "PWM占空比观察器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "高",
+      "safety_gate": "“PWM占空比观察器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“PWM占空比观察器”的一次完整状态变化",
+        "记录“PWM占空比观察器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "仅文档/逻辑；总线实机需另行验证",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-037",
+      "title": "红外遥控码显示器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“红外遥控码显示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“红外遥控码显示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "红外遥控码显示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别红外遥控码显示器的输入、输出与失效模式",
+        "解释红外遥控码显示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "红外遥控码显示器专用3.3V输入模块",
+        "红外遥控码显示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“红外遥控码显示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“红外遥控码显示器”的一次完整状态变化",
+        "记录“红外遥控码显示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-038",
+      "title": "霍尔转速演示器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“霍尔转速演示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“霍尔转速演示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "霍尔转速演示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别霍尔转速演示器的输入、输出与失效模式",
+        "解释霍尔转速演示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "霍尔转速演示器专用3.3V输入模块",
+        "霍尔转速演示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“霍尔转速演示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“霍尔转速演示器”的一次完整状态变化",
+        "记录“霍尔转速演示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-039",
+      "title": "水温变化记录器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“水温变化记录器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“水温变化记录器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "水温变化记录器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别水温变化记录器的输入、输出与失效模式",
+        "解释水温变化记录器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "水温变化记录器专用3.3V输入模块",
+        "水温变化记录器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“水温变化记录器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“水温变化记录器”的一次完整状态变化",
+        "记录“水温变化记录器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "measurement-040",
+      "title": "迷你示波数据采样器",
+      "category": "measurement",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“迷你示波数据采样器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“迷你示波数据采样器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "迷你示波数据采样器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别迷你示波数据采样器的输入、输出与失效模式",
+        "解释迷你示波数据采样器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "迷你示波数据采样器专用3.3V输入模块",
+        "迷你示波数据采样器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“迷你示波数据采样器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“迷你示波数据采样器”的一次完整状态变化",
+        "记录“迷你示波数据采样器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-041",
+      "title": "循迹测速智能车",
+      "category": "mobility",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "让低压两轮模型车循迹并用编码器估算速度",
+      "expected_result": "完成“循迹测速智能车”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "循迹测速智能车的接口与状态机",
+        "循迹测速智能车的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明循迹测速智能车的输入输出和阈值",
+        "预测循迹测速智能车的一个故障与停机措施"
+      ],
+      "core_components": [
+        "循迹模块",
+        "编码器",
+        "TB6612/同类驱动",
+        "受控电池盒"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "轮子悬空调试、驱动独立供电、失去循迹立即停机；禁止载人或道路使用",
+      "observable_acceptance": [
+        "白底黑线连续循迹1米；速度每500ms更新一次；脱线后100ms内停机",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/mobility-041.md"
+      ]
+    },
+    {
+      "id": "mobility-042",
+      "title": "超声避障配送车",
+      "category": "mobility",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "低速桌面模型车检测前方障碍并停止或绕行",
+      "expected_result": "完成“超声避障配送车”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "超声避障配送车的接口与状态机",
+        "超声避障配送车的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明超声避障配送车的输入输出和阈值",
+        "预测超声避障配送车的一个故障与停机措施"
+      ],
+      "core_components": [
+        "HC-SR04经Echo分压",
+        "TB6612驱动",
+        "低压电机"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "Echo必须分压至3.3V；非防撞装置，不得用于真实配送或人群环境",
+      "observable_acceptance": [
+        "距离低于可覆写20cm时100ms内停机；仅在桌面1米路径测试",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/mobility-042.md"
+      ]
+    },
+    {
+      "id": "mobility-043",
+      "title": "舵机机械臂分拣",
+      "category": "mobility",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "用桌面舵机机械臂按颜色/按键模拟信号分拣轻质物块",
+      "expected_result": "完成“舵机机械臂分拣”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "舵机机械臂分拣的接口与状态机",
+        "舵机机械臂分拣的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明舵机机械臂分拣的输入输出和阈值",
+        "预测舵机机械臂分拣的一个故障与停机措施"
+      ],
+      "core_components": [
+        "2个微型舵机",
+        "颜色/按键模块",
+        "独立5V供电"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "舵机独立限流供电、先空载校准；禁止夹取人体、重物或高速运行",
+      "observable_acceptance": [
+        "接到有效分类信号后3秒内完成一次取放；限位触发或超时立即停机",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/mobility-043.md"
+      ]
+    },
+    {
+      "id": "mobility-044",
+      "title": "自动门模型控制器",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“自动门模型控制器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“自动门模型控制器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "自动门模型控制器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别自动门模型控制器的输入、输出与失效模式",
+        "解释自动门模型控制器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "自动门模型控制器专用3.3V输入模块",
+        "自动门模型控制器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“自动门模型控制器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“自动门模型控制器”的一次完整状态变化",
+        "记录“自动门模型控制器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-045",
+      "title": "窗帘模型定时开合器",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“窗帘模型定时开合器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“窗帘模型定时开合器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "窗帘模型定时开合器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别窗帘模型定时开合器的输入、输出与失效模式",
+        "解释窗帘模型定时开合器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "窗帘模型定时开合器专用3.3V输入模块",
+        "窗帘模型定时开合器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“窗帘模型定时开合器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“窗帘模型定时开合器”的一次完整状态变化",
+        "记录“窗帘模型定时开合器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-046",
+      "title": "桌面传送带节拍器",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“桌面传送带节拍器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“桌面传送带节拍器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "桌面传送带节拍器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别桌面传送带节拍器的输入、输出与失效模式",
+        "解释桌面传送带节拍器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "桌面传送带节拍器专用3.3V输入模块",
+        "桌面传送带节拍器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“桌面传送带节拍器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“桌面传送带节拍器”的一次完整状态变化",
+        "记录“桌面传送带节拍器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-047",
+      "title": "避障车距离提示器",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“避障车距离提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“避障车距离提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "避障车距离提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别避障车距离提示器的输入、输出与失效模式",
+        "解释避障车距离提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "避障车距离提示器专用3.3V输入模块",
+        "避障车距离提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“避障车距离提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“避障车距离提示器”的一次完整状态变化",
+        "记录“避障车距离提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-048",
+      "title": "机械臂按键示教器",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“机械臂按键示教器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“机械臂按键示教器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "机械臂按键示教器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别机械臂按键示教器的输入、输出与失效模式",
+        "解释机械臂按键示教器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "机械臂按键示教器专用3.3V输入模块",
+        "机械臂按键示教器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“机械臂按键示教器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“机械臂按键示教器”的一次完整状态变化",
+        "记录“机械臂按键示教器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-049",
+      "title": "轮椅模型转向提示器",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“轮椅模型转向提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“轮椅模型转向提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "轮椅模型转向提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别轮椅模型转向提示器的输入、输出与失效模式",
+        "解释轮椅模型转向提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "轮椅模型转向提示器专用3.3V输入模块",
+        "轮椅模型转向提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“轮椅模型转向提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“轮椅模型转向提示器”的一次完整状态变化",
+        "记录“轮椅模型转向提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-050",
+      "title": "小车刹停灯状态机",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“小车刹停灯状态机”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“小车刹停灯状态机”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "小车刹停灯状态机的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别小车刹停灯状态机的输入、输出与失效模式",
+        "解释小车刹停灯状态机的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "小车刹停灯状态机专用3.3V输入模块",
+        "小车刹停灯状态机专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“小车刹停灯状态机”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“小车刹停灯状态机”的一次完整状态变化",
+        "记录“小车刹停灯状态机”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-051",
+      "title": "门禁闸机缩比模型",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“门禁闸机缩比模型”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“门禁闸机缩比模型”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "门禁闸机缩比模型的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别门禁闸机缩比模型的输入、输出与失效模式",
+        "解释门禁闸机缩比模型的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "门禁闸机缩比模型专用3.3V输入模块",
+        "门禁闸机缩比模型专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“门禁闸机缩比模型”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“门禁闸机缩比模型”的一次完整状态变化",
+        "记录“门禁闸机缩比模型”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-052",
+      "title": "电机振动趋势记录器",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“电机振动趋势记录器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“电机振动趋势记录器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "电机振动趋势记录器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别电机振动趋势记录器的输入、输出与失效模式",
+        "解释电机振动趋势记录器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "电机振动趋势记录器专用3.3V输入模块",
+        "电机振动趋势记录器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“电机振动趋势记录器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“电机振动趋势记录器”的一次完整状态变化",
+        "记录“电机振动趋势记录器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "mobility-053",
+      "title": "循迹路径统计器",
+      "category": "mobility",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“循迹路径统计器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“循迹路径统计器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "循迹路径统计器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别循迹路径统计器的输入、输出与失效模式",
+        "解释循迹路径统计器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "循迹路径统计器专用3.3V输入模块",
+        "循迹路径统计器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“循迹路径统计器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“循迹路径统计器”的一次完整状态变化",
+        "记录“循迹路径统计器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-054",
+      "title": "Modbus RTU",
+      "category": "industrial",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "在低压桌面网络中作为Modbus RTU从站响应寄存器读取",
+      "expected_result": "完成“Modbus RTU”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "Modbus RTU的接口与状态机",
+        "Modbus RTU的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明Modbus RTU的输入输出和阈值",
+        "预测Modbus RTU的一个故障与停机措施"
+      ],
+      "core_components": [
+        "RS485收发器",
+        "120Ω终端",
+        "USB-RS485适配器"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "只限隔离低压桌面总线；禁止接生产线或未知带电RS485网络",
+      "observable_acceptance": [
+        "9600 8N1下正确响应至少3个保持寄存器；CRC错误帧不得改写状态",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/industrial-054.md"
+      ]
+    },
+    {
+      "id": "industrial-055",
+      "title": "RS485多节点",
+      "category": "industrial",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "建立三个低压RS485节点并观察地址轮询",
+      "expected_result": "完成“RS485多节点”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "RS485多节点的接口与状态机",
+        "RS485多节点的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明RS485多节点的输入输出和阈值",
+        "预测RS485多节点的一个故障与停机措施"
+      ],
+      "core_components": [
+        "3个RS485收发器",
+        "120Ω终端",
+        "偏置电阻"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "总线断电接线、双端终端；禁止接工业现场或跨建筑长线",
+      "observable_acceptance": [
+        "主站依次轮询3个地址，10次循环无冲突；断开一个节点其余仍报状态",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/industrial-055.md"
+      ]
+    },
+    {
+      "id": "industrial-056",
+      "title": "传送带光电计数模型",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“传送带光电计数模型”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“传送带光电计数模型”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "传送带光电计数模型的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别传送带光电计数模型的输入、输出与失效模式",
+        "解释传送带光电计数模型的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "传送带光电计数模型专用3.3V输入模块",
+        "传送带光电计数模型专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“传送带光电计数模型”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“传送带光电计数模型”的一次完整状态变化",
+        "记录“传送带光电计数模型”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-057",
+      "title": "仓位指示灯控制器",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“仓位指示灯控制器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“仓位指示灯控制器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "仓位指示灯控制器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别仓位指示灯控制器的输入、输出与失效模式",
+        "解释仓位指示灯控制器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "仓位指示灯控制器专用3.3V输入模块",
+        "仓位指示灯控制器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“仓位指示灯控制器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“仓位指示灯控制器”的一次完整状态变化",
+        "记录“仓位指示灯控制器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-058",
+      "title": "工位呼叫按钮盒",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“工位呼叫按钮盒”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“工位呼叫按钮盒”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "工位呼叫按钮盒的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别工位呼叫按钮盒的输入、输出与失效模式",
+        "解释工位呼叫按钮盒的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "工位呼叫按钮盒专用3.3V输入模块",
+        "工位呼叫按钮盒专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“工位呼叫按钮盒”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“工位呼叫按钮盒”的一次完整状态变化",
+        "记录“工位呼叫按钮盒”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-059",
+      "title": "条码扫描串口显示器",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“条码扫描串口显示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“条码扫描串口显示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "条码扫描串口显示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别条码扫描串口显示器的输入、输出与失效模式",
+        "解释条码扫描串口显示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "条码扫描串口显示器专用3.3V输入模块",
+        "条码扫描串口显示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“条码扫描串口显示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“条码扫描串口显示器”的一次完整状态变化",
+        "记录“条码扫描串口显示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-060",
+      "title": "设备运行时长计",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“设备运行时长计”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“设备运行时长计”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "设备运行时长计的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别设备运行时长计的输入、输出与失效模式",
+        "解释设备运行时长计的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "设备运行时长计专用3.3V输入模块",
+        "设备运行时长计专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60–90分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“设备运行时长计”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“设备运行时长计”的一次完整状态变化",
+        "记录“设备运行时长计”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-061",
+      "title": "阀门开度模拟面板",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“阀门开度模拟面板”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“阀门开度模拟面板”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "阀门开度模拟面板的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别阀门开度模拟面板的输入、输出与失效模式",
+        "解释阀门开度模拟面板的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "阀门开度模拟面板专用3.3V输入模块",
+        "阀门开度模拟面板专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“阀门开度模拟面板”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“阀门开度模拟面板”的一次完整状态变化",
+        "记录“阀门开度模拟面板”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-062",
+      "title": "继电器逻辑演示台",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“继电器逻辑演示台”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“继电器逻辑演示台”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "继电器逻辑演示台的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别继电器逻辑演示台的输入、输出与失效模式",
+        "解释继电器逻辑演示台的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "继电器逻辑演示台专用3.3V输入模块",
+        "继电器逻辑演示台专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“继电器逻辑演示台”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“继电器逻辑演示台”的一次完整状态变化",
+        "记录“继电器逻辑演示台”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-063",
+      "title": "CAN报文监视练习器",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“CAN报文监视练习器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“CAN报文监视练习器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "CAN报文监视练习器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别CAN报文监视练习器的输入、输出与失效模式",
+        "解释CAN报文监视练习器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "CAN报文监视练习器专用3.3V输入模块",
+        "CAN报文监视练习器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“CAN报文监视练习器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“CAN报文监视练习器”的一次完整状态变化",
+        "记录“CAN报文监视练习器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-064",
+      "title": "传感器报警联锁模型",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“传感器报警联锁模型”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“传感器报警联锁模型”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "传感器报警联锁模型的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别传感器报警联锁模型的输入、输出与失效模式",
+        "解释传感器报警联锁模型的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "传感器报警联锁模型专用3.3V输入模块",
+        "传感器报警联锁模型专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“传感器报警联锁模型”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“传感器报警联锁模型”的一次完整状态变化",
+        "记录“传感器报警联锁模型”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "industrial-065",
+      "title": "故障代码指示终端",
+      "category": "industrial",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“故障代码指示终端”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“故障代码指示终端”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "故障代码指示终端的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别故障代码指示终端的输入、输出与失效模式",
+        "解释故障代码指示终端的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "故障代码指示终端专用3.3V输入模块",
+        "故障代码指示终端专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“故障代码指示终端”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“故障代码指示终端”的一次完整状态变化",
+        "记录“故障代码指示终端”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "energy_safety-066",
+      "title": "低压直流用电计量",
+      "category": "energy_safety",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "累计受控低压负载的电压、电流、功率与电量",
+      "expected_result": "完成“低压直流用电计量”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "低压直流用电计量的接口与状态机",
+        "低压直流用电计量的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明低压直流用电计量的输入输出和阈值",
+        "预测低压直流用电计量的一个故障与停机措施"
+      ],
+      "core_components": [
+        "INA219/同类模块",
+        "受保护负载",
+        "OLED"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "仅低压受保护回路，非贸易计量；禁止接市电或高能量电池",
+      "observable_acceptance": [
+        "每秒更新功率并每60秒累加电量；可覆写采样周期",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/energy_safety-066.md"
+      ]
+    },
+    {
+      "id": "energy_safety-067",
+      "title": "低压掉电提醒",
+      "category": "energy_safety",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "检测受控5V供电下降并保存本地掉电事件",
+      "expected_result": "完成“低压掉电提醒”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "低压掉电提醒的接口与状态机",
+        "低压掉电提醒的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明低压掉电提醒的输入输出和阈值",
+        "预测低压掉电提醒的一个故障与停机措施"
+      ],
+      "core_components": [
+        "分压电阻",
+        "超级电容/备用低压模块",
+        "EEPROM模拟区"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "不得用于生命安全或关键设备；禁止改造充电器和锂电保护",
+      "observable_acceptance": [
+        "电压低于可覆写4.5V后100ms内记录一次事件并提示",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/energy_safety-067.md"
+      ]
+    },
+    {
+      "id": "energy_safety-068",
+      "title": "低压过流过压告警",
+      "category": "energy_safety",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "在低压演示回路中检测过流或过压并解除驱动使能",
+      "expected_result": "完成“低压过流过压告警”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "低压过流过压告警的接口与状态机",
+        "低压过流过压告警的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明低压过流过压告警的输入输出和阈值",
+        "预测低压过流过压告警的一个故障与停机措施"
+      ],
+      "core_components": [
+        "电流检测模块",
+        "分压模块",
+        "MOSFET使能",
+        "蜂鸣器"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "仅限限流电源与低压演示负载；不替代保险丝、断路器或电气保护",
+      "observable_acceptance": [
+        "超过可覆写阈值连续50ms即断开使能并锁存告警，按键复位",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/energy_safety-068.md"
+      ]
+    },
+    {
+      "id": "energy_safety-069",
+      "title": "移动电源温度提醒器",
+      "category": "energy_safety",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“移动电源温度提醒器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“移动电源温度提醒器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "移动电源温度提醒器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别移动电源温度提醒器的输入、输出与失效模式",
+        "解释移动电源温度提醒器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "移动电源温度提醒器专用3.3V输入模块",
+        "移动电源温度提醒器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“移动电源温度提醒器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“移动电源温度提醒器”的一次完整状态变化",
+        "记录“移动电源温度提醒器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "energy_safety-070",
+      "title": "漏水安全提醒器",
+      "category": "energy_safety",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“漏水安全提醒器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“漏水安全提醒器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "漏水安全提醒器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别漏水安全提醒器的输入、输出与失效模式",
+        "解释漏水安全提醒器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "漏水安全提醒器专用3.3V输入模块",
+        "漏水安全提醒器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90–120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“漏水安全提醒器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“漏水安全提醒器”的一次完整状态变化",
+        "记录“漏水安全提醒器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "energy_safety-071",
+      "title": "门窗防忘关提示器",
+      "category": "energy_safety",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“门窗防忘关提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“门窗防忘关提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "门窗防忘关提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别门窗防忘关提示器的输入、输出与失效模式",
+        "解释门窗防忘关提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "门窗防忘关提示器专用3.3V输入模块",
+        "门窗防忘关提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“门窗防忘关提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“门窗防忘关提示器”的一次完整状态变化",
+        "记录“门窗防忘关提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "energy_safety-072",
+      "title": "烟雾传感器学习报警器",
+      "category": "energy_safety",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“烟雾传感器学习报警器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“烟雾传感器学习报警器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "烟雾传感器学习报警器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别烟雾传感器学习报警器的输入、输出与失效模式",
+        "解释烟雾传感器学习报警器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "烟雾传感器学习报警器专用3.3V输入模块",
+        "烟雾传感器学习报警器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "高",
+      "safety_gate": "“烟雾传感器学习报警器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“烟雾传感器学习报警器”的一次完整状态变化",
+        "记录“烟雾传感器学习报警器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "仅文档/逻辑；总线实机需另行验证",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "energy_safety-073",
+      "title": "燃气传感器通风提示模型",
+      "category": "energy_safety",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“燃气传感器通风提示模型”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“燃气传感器通风提示模型”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "燃气传感器通风提示模型的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别燃气传感器通风提示模型的输入、输出与失效模式",
+        "解释燃气传感器通风提示模型的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "燃气传感器通风提示模型专用3.3V输入模块",
+        "燃气传感器通风提示模型专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“燃气传感器通风提示模型”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“燃气传感器通风提示模型”的一次完整状态变化",
+        "记录“燃气传感器通风提示模型”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "energy_safety-074",
+      "title": "充电线过流演示监视器",
+      "category": "energy_safety",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“充电线过流演示监视器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“充电线过流演示监视器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "充电线过流演示监视器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别充电线过流演示监视器的输入、输出与失效模式",
+        "解释充电线过流演示监视器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "充电线过流演示监视器专用3.3V输入模块",
+        "充电线过流演示监视器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“充电线过流演示监视器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“充电线过流演示监视器”的一次完整状态变化",
+        "记录“充电线过流演示监视器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "energy_safety-075",
+      "title": "紧急手电状态提示器",
+      "category": "energy_safety",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“紧急手电状态提示器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“紧急手电状态提示器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "紧急手电状态提示器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别紧急手电状态提示器的输入、输出与失效模式",
+        "解释紧急手电状态提示器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "紧急手电状态提示器专用3.3V输入模块",
+        "紧急手电状态提示器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“紧急手电状态提示器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“紧急手电状态提示器”的一次完整状态变化",
+        "记录“紧急手电状态提示器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "innovation-076",
+      "title": "智能温室",
+      "category": "innovation",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "采集温湿度、光照与土壤湿度，演示低压温室状态控制",
+      "expected_result": "完成“智能温室”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "智能温室的接口与状态机",
+        "智能温室的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明智能温室的输入输出和阈值",
+        "预测智能温室的一个故障与停机措施"
+      ],
+      "core_components": [
+        "温湿度模块",
+        "光敏模块",
+        "土壤湿度模块",
+        "5V微泵模型"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "水泵低压独立供电；禁止无人值守、药液或市电温室设备",
+      "observable_acceptance": [
+        "三项传感值每2秒刷新；干燥状态仅短时驱动泵模型5秒",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/innovation-076.md"
+      ]
+    },
+    {
+      "id": "innovation-077",
+      "title": "模块化环境巡检",
+      "category": "innovation",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "轮询可插拔环境模块并报告缺失或异常模块",
+      "expected_result": "完成“模块化环境巡检”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "模块化环境巡检的接口与状态机",
+        "模块化环境巡检的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明模块化环境巡检的输入输出和阈值",
+        "预测模块化环境巡检的一个故障与停机措施"
+      ],
+      "core_components": [
+        "I2C温湿度模块",
+        "光照模块",
+        "OLED",
+        "串口"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "高",
+      "safety_gate": "热插拔前断电；不将传感器结果作医疗、消防或安全结论",
+      "observable_acceptance": [
+        "每5秒扫描至少2个模块；拔掉任一模块后10秒内报告缺失",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "仅文档/逻辑；总线实机需另行验证",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/innovation-077.md"
+      ]
+    },
+    {
+      "id": "innovation-078",
+      "title": "多传感器智能车",
+      "category": "innovation",
+      "mode": "detailed",
+      "status": "v2-pattern-ready",
+      "life_problem": "融合循迹、超声和光照输入驱动低速桌面智能车策略",
+      "expected_result": "完成“多传感器智能车”受控低压原型，并按量化验收与可覆写条件记录证据。",
+      "knowledge": [
+        "多传感器智能车的接口与状态机",
+        "多传感器智能车的低压安全与故障处理"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "说明多传感器智能车的输入输出和阈值",
+        "预测多传感器智能车的一个故障与停机措施"
+      ],
+      "core_components": [
+        "循迹模块",
+        "超声模块分压",
+        "TB6612驱动",
+        "低压电机"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "轮子悬空首测、低压限流；不得在道路、楼梯或人群使用",
+      "observable_acceptance": [
+        "循迹正常时行驶；障碍20cm内停止；任一传感器无效即停机",
+        "保存一次可追溯构建或实机证据；未实机不得声称功能验收"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json",
+        "projects/v2-detailed/innovation-078.md"
+      ]
+    },
+    {
+      "id": "innovation-079",
+      "title": "图书馆座位状态牌",
+      "category": "innovation",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“图书馆座位状态牌”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“图书馆座位状态牌”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "图书馆座位状态牌的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别图书馆座位状态牌的输入、输出与失效模式",
+        "解释图书馆座位状态牌的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "图书馆座位状态牌专用3.3V输入模块",
+        "图书馆座位状态牌专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "45–60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“图书馆座位状态牌”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“图书馆座位状态牌”的一次完整状态变化",
+        "记录“图书馆座位状态牌”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "innovation-080",
+      "title": "校园植物认养记录器",
+      "category": "innovation",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“校园植物认养记录器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“校园植物认养记录器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "校园植物认养记录器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别校园植物认养记录器的输入、输出与失效模式",
+        "解释校园植物认养记录器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "校园植物认养记录器专用3.3V输入模块",
+        "校园植物认养记录器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "60分钟",
+      "difficulty": "入门",
+      "safety_level": "低",
+      "safety_gate": "“校园植物认养记录器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“校园植物认养记录器”的一次完整状态变化",
+        "记录“校园植物认养记录器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "innovation-081",
+      "title": "宿舍节能提醒面板",
+      "category": "innovation",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“宿舍节能提醒面板”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“宿舍节能提醒面板”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "宿舍节能提醒面板的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别宿舍节能提醒面板的输入、输出与失效模式",
+        "解释宿舍节能提醒面板的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "宿舍节能提醒面板专用3.3V输入模块",
+        "宿舍节能提醒面板专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "低",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "低",
+      "safety_gate": "“宿舍节能提醒面板”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“宿舍节能提醒面板”的一次完整状态变化",
+        "记录“宿舍节能提醒面板”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "innovation-082",
+      "title": "社区快递柜状态模型",
+      "category": "innovation",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“社区快递柜状态模型”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“社区快递柜状态模型”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "社区快递柜状态模型的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别社区快递柜状态模型的输入、输出与失效模式",
+        "解释社区快递柜状态模型的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "社区快递柜状态模型专用3.3V输入模块",
+        "社区快递柜状态模型专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90分钟",
+      "difficulty": "基础",
+      "safety_level": "中",
+      "safety_gate": "“社区快递柜状态模型”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“社区快递柜状态模型”的一次完整状态变化",
+        "记录“社区快递柜状态模型”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "innovation-083",
+      "title": "骑行头盔佩戴提示模型",
+      "category": "innovation",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“骑行头盔佩戴提示模型”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“骑行头盔佩戴提示模型”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "骑行头盔佩戴提示模型的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别骑行头盔佩戴提示模型的输入、输出与失效模式",
+        "解释骑行头盔佩戴提示模型的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "骑行头盔佩戴提示模型专用3.3V输入模块",
+        "骑行头盔佩戴提示模型专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "90–120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“骑行头盔佩戴提示模型”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“骑行头盔佩戴提示模型”的一次完整状态变化",
+        "记录“骑行头盔佩戴提示模型”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "innovation-084",
+      "title": "桌面垃圾分类训练器",
+      "category": "innovation",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“桌面垃圾分类训练器”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“桌面垃圾分类训练器”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "桌面垃圾分类训练器的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别桌面垃圾分类训练器的输入、输出与失效模式",
+        "解释桌面垃圾分类训练器的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "桌面垃圾分类训练器专用3.3V输入模块",
+        "桌面垃圾分类训练器专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "中",
+      "safety_gate": "“桌面垃圾分类训练器”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“桌面垃圾分类训练器”的一次完整状态变化",
+        "记录“桌面垃圾分类训练器”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "文档/逻辑验证；未宣称实机成功",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    },
+    {
+      "id": "innovation-085",
+      "title": "可视化传感器数据看板",
+      "category": "innovation",
+      "mode": "catalog-only",
+      "status": "catalog-only",
+      "life_problem": "围绕“可视化传感器数据看板”的家庭、校园或桌面低压场景，解决其可观察状态、记录或提醒需求。",
+      "expected_result": "完成“可视化传感器数据看板”的受控低压功能原型，记录构建、逻辑测试或实机证据；未提供实机证据时不宣称硬件已运行。",
+      "knowledge": [
+        "可视化传感器数据看板的信号采集与状态机",
+        "CubeMX外设配置与证据记录"
+      ],
+      "prerequisites": [
+        "S0-gpio-basics"
+      ],
+      "prestudy_focus": [
+        "识别可视化传感器数据看板的输入、输出与失效模式",
+        "解释可视化传感器数据看板的低压安全边界"
+      ],
+      "core_components": [
+        "STM32F103C8Tx",
+        "可视化传感器数据看板专用3.3V输入模块",
+        "可视化传感器数据看板专用低压输出/显示模块",
+        "受控USB或限流低压电源"
+      ],
+      "cost_band": "中",
+      "estimated_time": "120分钟",
+      "difficulty": "进阶",
+      "safety_level": "高",
+      "safety_gate": "“可视化传感器数据看板”只在断电接线后的受控3.3V/5V低压条件下实验；不得连接市电、高压、无保护锂电池或安全关键负载。",
+      "observable_acceptance": [
+        "在可覆写测试条件下完成“可视化传感器数据看板”的一次完整状态变化",
+        "记录“可视化传感器数据看板”的串口或照片证据，未实机不得宣称运行"
+      ],
+      "applicable_chips": [
+        "STM32F103C8Tx"
+      ],
+      "verification_level": "仅文档/逻辑；总线实机需另行验证",
+      "validation_note": "已明确生活场景；课堂合同、精确接线和实机验收尚未补齐，不得声称完成实机验证。",
+      "references": [
+        "curriculum/S0-S7.json",
+        "schemas/project.schema.json"
+      ]
+    }
+  ]
+}

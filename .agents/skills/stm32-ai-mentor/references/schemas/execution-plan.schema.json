@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/execution-plan.schema.json",
+  "title": "ExecutionPlan",
+  "description": "绑定 baseline、固件、目标身份和回滚点的受控执行计划。",
+  "type": "object",
+  "required": ["baseline_hash", "firmware_hash", "target_identity_hash", "tool_versions", "operations", "risks", "rollback"],
+  "properties": {
+    "baseline_hash": {"$ref": "#/$defs/sha256"},
+    "firmware_hash": {"$ref": "#/$defs/sha256"},
+    "target_identity_hash": {"$ref": "#/$defs/sha256"},
+    "tool_versions": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 1}},
+    "operations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "risks": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "rollback": {
+      "type": "object", "required": ["artifact_hash", "verification_action"],
+      "properties": {
+        "artifact_hash": {"$ref": "#/$defs/sha256"},
+        "verification_action": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}},
+  "additionalProperties": false
+}

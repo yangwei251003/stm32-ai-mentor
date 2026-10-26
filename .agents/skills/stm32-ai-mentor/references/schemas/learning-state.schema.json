@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/learning-state.schema.json",
+  "title": "STM32 AI Mentor materialized learning state",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "revision",
+    "last_event_id",
+    "profile",
+    "memory_mode",
+    "extensions",
+    "prestudy",
+    "mastery",
+    "current_course",
+    "completed_courses",
+    "evidence",
+    "unverified_conclusions",
+    "misconceptions",
+    "due_reviews",
+    "homework",
+    "resume_pointer"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "revision": { "type": "integer", "minimum": 0 },
+    "last_event_id": { "type": ["string", "null"] },
+    "updated_at": { "type": ["string", "null"], "format": "date-time" },
+    "memory_mode": { "const": "automatic_local" },
+    "extensions": { "type": "object", "additionalProperties": true },
+    "profile": {
+      "type": "object",
+      "required": ["student_id", "name", "level", "primary_mcu", "toolchain"],
+      "properties": {
+        "hardware_baseline": { "$ref": "#/$defs/hardwareBaseline" },
+        "toolchain_baseline": { "$ref": "#/$defs/toolchainBaseline" }
+      }
+    },
+    "prestudy": {
+      "type": "object",
+      "required": ["completed", "score", "total", "passed", "attempts", "wrong_topics", "remediations"],
+      "properties": {
+        "score": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 },
+        "total": { "const": 5 },
+        "passed": { "type": "boolean" },
+        "attempts": { "type": "array" },
+        "wrong_topics": { "type": "array", "items": { "type": "string" } },
+        "remediations": { "type": "array" }
+      }
+    },
+    "mastery": {
+      "type": "object",
+      "required": ["theory", "practice", "debugging", "transfer"],
+      "additionalProperties": false,
+      "properties": {
+        "theory": { "$ref": "#/$defs/masteryDimension" },
+        "practice": { "$ref": "#/$defs/masteryDimension" },
+        "debugging": { "$ref": "#/$defs/masteryDimension" },
+        "transfer": { "$ref": "#/$defs/masteryDimension" }
+      }
+    },
+    "current_course": { "type": ["object", "null"] },
+    "completed_courses": { "type": "array" },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence_id", "source", "verification_status"],
+        "properties": {
+          "evidence_id": { "type": "string" },
+          "source": { "enum": ["tool", "reported_by_user", "mentor_assessment"] },
+          "verification_status": { "enum": ["verified", "unverified", "self_reported"] },
+          "verification_level": { "enum": ["V0", "V1", "V2", "V3", "V4", "V5", null] },
+          "hardware_verified": { "type": "boolean" }
+        }
+      }
+    },
+    "unverified_conclusions": { "type": "array" },
+    "misconceptions": { "type": "array" },
+    "due_reviews": { "type": "array" },
+    "homework": { "type": "array" },
+    "resume_pointer": {
+      "type": "object",
+      "required": ["phase", "project_id", "milestone_id", "next_action"]
+    }
+  },
+  "$defs": {
+    "hardwareBaseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mcu": { "type": ["string", "null"] },
+        "package": { "type": ["string", "null"] },
+        "board": { "type": ["string", "null"] },
+        "board_revision": { "type": ["string", "null"] },
+        "logic_voltage": { "type": ["string", "null"] },
+        "evidence_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "toolchainBaseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ide": { "type": ["string", "null"] },
+        "ide_version": { "type": ["string", "null"] },
+        "framework": { "type": ["string", "null"] },
+        "firmware_package": { "type": ["string", "null"] },
+        "programmer": { "type": ["string", "null"] },
+        "programmer_firmware": { "type": ["string", "null"] },
+        "debug_interface": { "type": ["string", "null"] },
+        "cubemx_version": { "type": ["string", "null"] },
+        "compiler": { "type": ["string", "null"] },
+        "evidence_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "masteryDimension": {
+      "type": "object",
+      "required": ["level", "label", "evidence_ids", "updated_at"],
+      "properties": {
+        "level": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "label": { "type": "string" },
+        "evidence_ids": { "type": "array", "items": { "type": "string" } },
+        "updated_at": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

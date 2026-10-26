@@ -1,0 +1,416 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/project-intake.schema.json",
+  "title": "ProjectIntake",
+  "description": "V2 项目需求、验收、采购决策、精确目标、资源和安全约束。",
+  "type": "object",
+  "required": [
+    "goal", "requirements", "acceptance_criteria", "exact_target", "resources", "resource_plan",
+    "safety", "required_stages", "clarification_questions", "next_action"
+  ],
+  "properties": {
+    "goal": {"type": "string", "minLength": 1},
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["requirement_id", "text", "acceptance_ids"],
+        "properties": {
+          "requirement_id": {"type": "string", "minLength": 1},
+          "text": {"type": "string", "minLength": 1},
+          "acceptance_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true}
+        },
+        "additionalProperties": true
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "acceptance_id", "text", "requires_hardware", "metric", "operator", "threshold",
+          "unit", "window", "observation_method"
+        ],
+        "properties": {
+          "acceptance_id": {"type": "string", "minLength": 1},
+          "text": {"type": "string", "minLength": 1},
+          "requires_hardware": {"type": "boolean"},
+          "metric": {"type": ["string", "null"]},
+          "operator": {"enum": ["eq", "ne", "lt", "lte", "gt", "gte", "between", null]},
+          "threshold": {
+            "oneOf": [
+              {"type": "number"},
+              {
+                "type": "object",
+                "properties": {"min": {"type": "number"}, "max": {"type": "number"}},
+                "minProperties": 1, "additionalProperties": false
+              },
+              {"type": "null"}
+            ]
+          },
+          "unit": {"type": ["string", "null"]},
+          "window": {
+            "oneOf": [
+              {
+                "type": "object", "required": ["samples"],
+                "properties": {"samples": {"type": "integer", "minimum": 1}},
+                "additionalProperties": false
+              },
+              {
+                "type": "object", "required": ["duration", "unit"],
+                "properties": {
+                  "duration": {"type": "number", "exclusiveMinimum": 0},
+                  "unit": {"type": "string", "minLength": 1}
+                }, "additionalProperties": false
+              },
+              {"type": "null"}
+            ]
+          },
+          "observation_method": {
+            "enum": ["instrument", "serial_log", "logic_test", "visual_observation", "bus_capture", "host_test", null]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "exact_target": {
+      "type": "object",
+      "required": ["mcu", "package", "board", "board_revision", "toolchain"],
+      "properties": {
+        "mcu": {"type": "string", "minLength": 1},
+        "package": {"type": "string", "minLength": 1},
+        "board": {"type": "string", "minLength": 1},
+        "board_revision": {"type": "string", "minLength": 1},
+        "toolchain": {
+          "oneOf": [
+            {"const": "unknown"},
+            {
+              "type": "object", "required": ["ide", "firmware_package", "compiler", "programmer"],
+              "properties": {
+                "ide": {"$ref": "#/$defs/namedVersion"},
+                "firmware_package": {"$ref": "#/$defs/namedVersion"},
+                "compiler": {"$ref": "#/$defs/namedVersion"},
+                "programmer": {
+                  "type": "object", "required": ["name"],
+                  "properties": {
+                    "name": {"type": "string", "minLength": 1},
+                    "version": {"type": "string", "minLength": 1}
+                  }, "additionalProperties": false
+                }
+              }, "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "resources": {
+      "type": "object",
+      "required": ["components", "budget", "time_limit"],
+      "properties": {
+        "components": {
+          "type": "array", "items": {
+            "type": "object", "required": ["component_id", "name", "model", "quantity"],
+            "properties": {
+              "component_id": {"type": "string", "minLength": 1},
+              "name": {"type": "string", "minLength": 1},
+              "model": {"type": "string", "minLength": 1},
+              "quantity": {"type": "integer", "minimum": 1}
+            }, "additionalProperties": false
+          }
+        },
+        "budget": {
+          "type": ["object", "null"],
+          "properties": {
+            "amount": {"type": "number", "exclusiveMinimum": 0},
+            "currency": {"type": "string", "minLength": 1}
+          }, "required": ["amount", "currency"], "additionalProperties": false
+        },
+        "time_limit": {
+          "type": ["object", "null"],
+          "properties": {
+            "hours": {"type": "number", "exclusiveMinimum": 0},
+            "deadline": {"type": "string", "minLength": 1}
+          }, "required": ["hours", "deadline"], "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "procurement": {
+      "type": "object",
+      "required": [
+        "inventory_status", "requirements_confirmation", "solution_options",
+        "selected_option_id", "selection_confirmation", "shopping_list",
+        "shopping_list_confirmation"
+      ],
+      "properties": {
+        "inventory_status": {
+          "enum": ["none_owned", "partial", "ready", "existing_or_unspecified"]
+        },
+        "requirements_confirmation": {"enum": ["pending", "confirmed"]},
+        "solution_options": {
+          "type": "array", "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "option_id", "name", "positioning", "pros", "cons",
+              "estimated_total", "recommended", "recommendation_reason"
+            ],
+            "properties": {
+              "option_id": {"type": "string", "minLength": 1},
+              "name": {"type": "string", "minLength": 1},
+              "positioning": {"type": "string", "minLength": 1},
+              "pros": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+              "cons": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+              "estimated_total": {
+                "type": ["object", "null"],
+                "properties": {
+                  "amount": {"type": "number", "exclusiveMinimum": 0},
+                  "currency": {"type": "string", "minLength": 1}
+                },
+                "required": ["amount", "currency"], "additionalProperties": false
+              },
+              "recommended": {"type": "boolean"},
+              "recommendation_reason": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false
+          }
+        },
+        "selected_option_id": {"type": ["string", "null"], "minLength": 1},
+        "selection_confirmation": {"enum": ["pending", "confirmed"]},
+        "shopping_list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id", "category", "exact_model", "quantity", "priority",
+              "purchase_batch", "selection_reason", "critical_specs",
+              "allowed_substitutes", "avoid", "purchase_status", "source_refs"
+            ],
+            "properties": {
+              "item_id": {"type": "string", "minLength": 1},
+              "category": {"type": "string", "minLength": 1},
+              "exact_model": {"type": "string", "minLength": 1},
+              "quantity": {"type": "integer", "minimum": 1},
+              "priority": {"enum": ["required", "recommended", "optional"]},
+              "purchase_batch": {"enum": ["now", "after_prototype"]},
+              "selection_reason": {"type": "string", "minLength": 1},
+              "critical_specs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+              "allowed_substitutes": {"type": "array", "items": {"type": "string", "minLength": 1}},
+              "avoid": {"type": "array", "items": {"type": "string", "minLength": 1}},
+              "purchase_status": {"enum": ["planned", "ordered", "received", "verified", "mismatch"]},
+              "source_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+            },
+            "additionalProperties": false
+          }
+        },
+        "shopping_list_confirmation": {"enum": ["pending", "confirmed"]}
+      },
+      "additionalProperties": false
+    },
+    "resource_plan": {
+      "type": "object",
+      "required": ["pins", "clocks", "dma", "irqs", "flash_bytes", "ram_bytes", "power"],
+      "properties": {
+        "pins": {
+          "type": "array",
+          "items": {
+            "type": "object", "required": ["pin", "signal", "function", "alternate_function"],
+            "properties": {
+              "pin": {"type": "string", "pattern": "^(UNKNOWN|P[AB](?:[0-9]|1[0-5])|PC1[3-5]|PD[01])$"},
+              "signal": {"type": "string", "minLength": 1},
+              "function": {"type": "string", "minLength": 1},
+              "alternate_function": {
+                "pattern": "^(GPIO|ANALOG|USB(?:_.*)?|USART[123](?:_.*)?|I2C[12](?:_.*)?|SPI[12](?:_.*)?|CAN(?:_.*)?|TIM[1234](?:_.*)?)$"
+              }
+            }, "additionalProperties": true
+          }
+        },
+        "clocks": {
+          "type": "object",
+          "properties": {
+            "sysclk_hz": {"type": "number", "exclusiveMinimum": 0, "maximum": 72000000},
+            "hclk_hz": {"type": "number", "exclusiveMinimum": 0, "maximum": 72000000},
+            "pclk1_hz": {"type": "number", "exclusiveMinimum": 0, "maximum": 36000000},
+            "pclk2_hz": {"type": "number", "exclusiveMinimum": 0, "maximum": 72000000},
+            "usb_hz": {"type": "number", "exclusiveMinimum": 0}
+          }, "additionalProperties": {"type": ["integer", "number", "string"]}
+        },
+        "dma": {
+          "type": "array", "items": {
+            "type": "object", "required": ["channel", "function"],
+            "properties": {
+              "channel": {"type": "string", "pattern": "^DMA1_CH[1-7]$"},
+              "function": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": true
+          }
+        },
+        "irqs": {
+          "type": "array", "items": {
+            "type": "object", "required": ["irq", "function"],
+            "properties": {"irq": {"type": "string", "minLength": 1}, "function": {"type": "string", "minLength": 1}},
+            "additionalProperties": true
+          }
+        },
+        "flash_bytes": {"type": ["integer", "null"], "minimum": 0},
+        "ram_bytes": {"type": ["integer", "null"], "minimum": 0},
+        "power": {
+          "type": "object", "required": ["rails", "loads"],
+          "properties": {
+            "rails": {"type": "array", "items": {"type": "object"}},
+            "loads": {"type": "array", "items": {"type": "object"}}
+          }, "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "safety": {
+      "type": "object",
+      "required": ["status", "gates", "blocked_reasons"],
+      "properties": {
+        "status": {"enum": ["pending", "passed", "blocked"]},
+        "gates": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "blocked_reasons": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        ,"echo_interface": {
+          "type": "object", "required": ["module_output_v", "mcu_max_v", "method"],
+          "properties": {
+            "module_output_v": {"type": "number", "exclusiveMinimum": 0},
+            "mcu_max_v": {"type": "number", "exclusiveMinimum": 0, "maximum": 3.6},
+            "method": {"enum": ["divider", "level_shifter"]},
+            "resistor_values": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "number", "exclusiveMinimum": 0}},
+            "source": {"type": "string", "minLength": 1}
+          }, "anyOf": [{"required": ["resistor_values"]}, {"required": ["source"]}], "additionalProperties": false
+        },
+        "motor_driver": {
+          "type": "object", "required": ["driver_model", "supply_domain", "separate_from_gpio", "peak_current_ma", "stop_method"],
+          "properties": {
+            "driver_model": {"type": "string", "minLength": 1},
+            "supply_domain": {"type": "string", "minLength": 1},
+            "separate_from_gpio": {"const": true},
+            "peak_current_ma": {"type": "number", "exclusiveMinimum": 0},
+            "stop_method": {"type": "string", "minLength": 1}
+          }, "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "hardware_identity": {"$ref": "#/$defs/HardwareIdentity"},
+    "execution_profile": {"$ref": "#/$defs/ExecutionProfile"},
+    "test_contract": {"$ref": "#/$defs/TestContract"},
+    "eda_profile": {"$ref": "#/$defs/EdaProfile"},
+    "cloud_policy": {"$ref": "#/$defs/CloudPolicy"},
+    "required_stages": {
+      "type": "array", "minItems": 7, "items": {"type": "string"}, "uniqueItems": true,
+      "allOf": [
+        {"contains": {"const": "requirements"}}, {"contains": {"const": "design"}},
+        {"contains": {"const": "resources"}}, {"contains": {"const": "hardware_plan"}},
+        {"contains": {"const": "implementation"}}, {"contains": {"const": "build"}},
+        {"contains": {"const": "hardware_acceptance"}}
+      ]
+    },
+    "clarification_questions": {"type": "array", "maxItems": 3, "items": {"type": "string"}, "uniqueItems": true},
+    "next_action": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "namedVersion": {
+      "type": "object", "required": ["name", "version"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1}
+      }, "additionalProperties": false
+    },
+    "HardwareIdentity": {
+      "type": "object",
+      "required": [
+        "mcu", "package", "board", "board_revision", "board_evidence_hash",
+        "flash_capacity_bytes", "photo_refs", "datasheet_refs"
+      ],
+      "properties": {
+        "mcu": {"type": "string", "minLength": 1},
+        "package": {"type": "string", "minLength": 1},
+        "board": {"type": "string", "minLength": 1},
+        "board_revision": {"type": "string", "minLength": 1},
+        "board_evidence_hash": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+        "flash_capacity_bytes": {"type": "integer", "minimum": 1024, "maximum": 2097152},
+        "photo_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "datasheet_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "ExecutionProfile": {
+      "type": "object",
+      "required": ["toolchain", "build_system", "probe", "serial", "allowed_actions"],
+      "properties": {
+        "toolchain": {"type": "string", "minLength": 1},
+        "build_system": {"type": "string", "minLength": 1},
+        "probe": {
+          "type": "object", "required": ["kind", "serial"],
+          "properties": {"kind": {"type": "string", "minLength": 1}, "serial": {"type": "string", "minLength": 1}},
+          "additionalProperties": false
+        },
+        "serial": {
+          "type": "object", "required": ["identity", "baudrate"],
+          "properties": {"identity": {"type": "string", "minLength": 1}, "baudrate": {"type": "integer", "minimum": 1}},
+          "additionalProperties": false
+        },
+        "allowed_actions": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"enum": [
+            "environment.inspect", "project.inspect", "cubemx.generate_staged", "build.run", "artifact.inspect",
+            "test.host", "probe.list", "target.identify", "serial.list", "serial.capture", "flash.plan",
+            "flash.execute", "target.reset", "test.target", "job.status", "job.cancel"
+          ]}
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestContract": {
+      "type": "object",
+      "required": ["startup_timeout_ms", "serial_protocol", "assertions", "measurement_tolerance", "timeout_ms"],
+      "properties": {
+        "startup_timeout_ms": {"type": "integer", "minimum": 1},
+        "serial_protocol": {"type": "string", "minLength": 1},
+        "assertions": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "required": ["assertion_id", "expression"],
+            "properties": {"assertion_id": {"type": "string", "minLength": 1}, "expression": {"type": "string", "minLength": 1}},
+            "additionalProperties": false
+          }
+        },
+        "measurement_tolerance": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "number", "minimum": 0}},
+        "timeout_ms": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "EdaProfile": {
+      "type": "object",
+      "required": ["board_outline", "layer_count", "design_rules", "manufacturer", "assembly", "mechanical_constraints"],
+      "properties": {
+        "board_outline": {
+          "type": "object", "required": ["width_mm", "height_mm"],
+          "properties": {"width_mm": {"type": "number", "exclusiveMinimum": 0}, "height_mm": {"type": "number", "exclusiveMinimum": 0}},
+          "additionalProperties": false
+        },
+        "layer_count": {"enum": [2, 4, 6, 8]},
+        "design_rules": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "number", "exclusiveMinimum": 0}},
+        "manufacturer": {"type": "string", "minLength": 1},
+        "assembly": {"type": "string", "minLength": 1},
+        "mechanical_constraints": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "CloudPolicy": {
+      "type": "object",
+      "required": ["flux_upload_allowed", "authoritative_source", "approved_data_classes"],
+      "properties": {
+        "flux_upload_allowed": {"type": "boolean", "default": true},
+        "authoritative_source": {"const": "kicad"},
+        "approved_data_classes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

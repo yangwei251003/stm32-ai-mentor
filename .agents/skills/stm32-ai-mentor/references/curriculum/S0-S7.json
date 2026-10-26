@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "source_of_detail": "S0-S7_knowledge_graph.md",
+  "nodes": [
+    {"id": "S0-gpio-basics", "label": "S0", "prerequisites": []},
+    {"id": "S1-digital-io", "label": "S1", "prerequisites": ["S0-gpio-basics"]},
+    {"id": "S2-time-state", "label": "S2", "prerequisites": ["S1-digital-io"]},
+    {"id": "S3-analog-acquisition", "label": "S3", "prerequisites": ["S1-digital-io", "S2-time-state"]},
+    {"id": "S4-sensor-storage", "label": "S4", "prerequisites": ["S3-analog-acquisition"]},
+    {"id": "S5-motion-control", "label": "S5", "prerequisites": ["S2-time-state", "S3-analog-acquisition"]},
+    {"id": "S6-communications", "label": "S6", "prerequisites": ["S1-digital-io", "S2-time-state"]},
+    {"id": "S7-system-integration", "label": "S7", "prerequisites": ["S4-sensor-storage", "S5-motion-control", "S6-communications"]}
+  ]
+}
+

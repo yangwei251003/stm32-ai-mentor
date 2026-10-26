@@ -1,0 +1,14 @@
+/Student_Profile/
+/Projects/
+/Competitions/
+/.codex/
+/.playwright-mcp/
+/%USERPROFILE%/
+/.tmp-stm32cube/
+.venv/
+.runtime/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.env.*

@@ -1,0 +1,8 @@
+interface:
+  display_name: "STM32 AI Mentor"
+  short_description: "生活项目驱动、可续学的 STM32 AI 课堂导师"
+  brand_color: "#0B5CAD"
+  default_prompt: "Use $stm32-ai-mentor to resume my evidence-based STM32 lesson from this workspace."
+policy:
+  allow_implicit_invocation: true
+

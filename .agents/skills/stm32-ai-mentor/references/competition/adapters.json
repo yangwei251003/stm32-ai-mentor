@@ -1,0 +1,35 @@
+{
+  "adapters": {
+    "nuedc": {
+      "official_name": "全国大学生电子设计竞赛",
+      "rule_source_requirement": "official",
+      "official_home": {"url": "https://nuedc.xjtu.edu.cn/", "source_tier": "official", "retrieved_at": "2026-08-21", "availability": "unverified"},
+      "official_edition_or_archive": {"availability": "unavailable", "note": "未核实到可安全索引的当届/往届入口；不得由往届外推本届。"},
+      "official_award_cases": {"availability": "unavailable", "note": "未在本索引编造获奖作品列表；以主办方当届公开入口为准。"},
+      "notes": "仅记录官方入口与检索日期；每届题目、赛制和时间以冻结的 RuleSet 为准。"
+    },
+    "cpipc": {
+      "official_name": "中国研究生电子设计竞赛",
+      "rule_source_requirement": "official",
+      "official_home": {"url": "https://cpipc.acge.org.cn/cw/hp/6", "source_tier": "official", "retrieved_at": "2026-08-21", "availability": "verified"},
+      "official_edition_or_archive": {"url": "https://cpipc.acge.org.cn/cw/hp/6", "source_tier": "official", "retrieved_at": "2026-08-21", "availability": "verified", "note": "入口需在本届冻结时再次核实；不得由往届外推本届。"},
+      "official_award_cases": {"availability": "unavailable", "note": "未在本索引编造获奖作品列表。"},
+      "notes": "不将往届通知或二手解读当作本届可提交规则。"
+    },
+    "soc_china": {
+      "official_name": "全国大学生嵌入式芯片与系统设计竞赛",
+      "rule_source_requirement": "official",
+      "official_home": {"url": "https://www.socchina.net/home", "source_tier": "official", "retrieved_at": "2026-08-21", "availability": "verified"},
+      "official_edition_or_archive": {"url": "https://www.socchina.net/home", "source_tier": "official", "retrieved_at": "2026-08-21", "availability": "verified", "note": "入口需在本届冻结时再次核实；不得由往届外推本届。"},
+      "official_award_cases": {"availability": "unavailable", "note": "未在本索引编造获奖作品列表。"},
+      "notes": "芯片、赛道、匿名和 AI 要求必须由本届 RuleSet 单独冻结。"
+    },
+    "generic": {
+      "official_name": "通用竞赛适配器",
+      "rule_source_requirement": "official_or_explicitly_degraded",
+      "notes": "无官方来源时仅允许草稿和风险清单，禁止通过提交预检。"
+    }
+  },
+  "source_tiers": ["official", "organizer_authorized", "archived_official", "secondary"],
+  "refresh_days": 7
+}

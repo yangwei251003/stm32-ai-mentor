@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/stage-result.schema.json",
+  "title": "StageResult",
+  "description": "绑定当前 baseline 与证据的 V2 阶段检查点。",
+  "type": "object",
+  "required": ["stage_id", "status", "baseline_hash", "evidence_ids", "outputs", "known_not_verified"],
+  "properties": {
+    "stage_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["pending", "in_progress", "blocked", "passed", "stale"]},
+    "baseline_hash": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+    "evidence_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "outputs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "known_not_verified": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+    ,"increment_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "execution_run_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "design_release_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+  },
+  "additionalProperties": true
+}

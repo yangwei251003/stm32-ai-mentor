@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/learning-event.schema.json",
+  "title": "STM32 AI Mentor learning event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_type",
+    "timestamp",
+    "revision",
+    "idempotency_key",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "event_id": { "type": "string", "minLength": 1 },
+    "event_type": {
+      "enum": [
+        "learning.profile_initialized",
+        "learning.profile_updated",
+        "learning.course_begun",
+        "learning.readiness_recorded",
+        "learning.remediation_recorded",
+        "learning.evidence_recorded",
+        "learning.mastery_updated",
+        "learning.milestone_updated",
+        "learning.homework_assigned",
+        "learning.homework_updated",
+        "learning.misconception_recorded",
+        "learning.unverified_conclusion_recorded",
+        "learning.review_scheduled",
+        "learning.review_completed",
+        "learning.course_finished"
+      ]
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "revision": { "type": "integer", "minimum": 1 },
+    "idempotency_key": { "type": ["string", "null"] },
+    "payload": { "type": "object" }
+  }
+}

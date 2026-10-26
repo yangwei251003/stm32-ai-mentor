@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/target-identity.schema.json",
+  "title": "TargetIdentity",
+  "description": "一次执行所识别的探针、MCU、板卡档案与目标电压。",
+  "type": "object",
+  "required": [
+    "probe_serial", "mcu_device_id", "mcu_uid", "board_profile", "board_evidence_hash",
+    "flash_capacity_bytes", "target_voltage_v"
+  ],
+  "properties": {
+    "probe_serial": {"type": "string", "minLength": 1},
+    "mcu_device_id": {"type": "string", "minLength": 1},
+    "mcu_uid": {"type": "string", "pattern": "^[0-9a-fA-F]{24}$"},
+    "board_profile": {"type": "string", "minLength": 1},
+    "board_evidence_hash": {"$ref": "#/$defs/sha256"},
+    "flash_capacity_bytes": {"type": "integer", "minimum": 1024, "maximum": 2097152},
+    "target_voltage_v": {"type": "number", "minimum": 1.6, "maximum": 3.6}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}},
+  "additionalProperties": false
+}

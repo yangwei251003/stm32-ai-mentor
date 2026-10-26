@@ -1,0 +1,6 @@
+pytest>=8,<9
+PyYAML>=6,<7
+mcp>=1,<2
+pyserial>=3.5,<4
+jsonschema>=4.22,<5
+typing_extensions>=4.12,<5

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/project.schema.json",
+  "title": "STM32 AI Mentor catalog project",
+  "type": "object",
+  "required": [
+    "id", "title", "category", "mode", "status", "life_problem", "expected_result",
+    "knowledge", "prerequisites", "prestudy_focus", "core_components", "cost_band",
+    "estimated_time", "difficulty", "safety_level", "safety_gate", "observable_acceptance",
+    "applicable_chips", "verification_level", "validation_note", "references"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_-]+$"},
+    "title": {"type": "string", "minLength": 2},
+    "category": {"enum": ["smart_home", "environment", "measurement", "mobility", "industrial", "energy_safety", "innovation"]},
+    "mode": {"enum": ["detailed", "catalog-only"]},
+    "status": {"enum": ["ready-for-class", "v2-pattern-ready", "catalog-only"]},
+    "life_problem": {"type": "string", "minLength": 4},
+    "expected_result": {"type": "string", "minLength": 4},
+    "knowledge": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "prerequisites": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "prestudy_focus": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "core_components": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "cost_band": {"enum": ["低", "中", "高"]},
+    "estimated_time": {"type": "string"},
+    "difficulty": {"type": "string"},
+    "safety_level": {"enum": ["低", "中", "高"]},
+    "safety_gate": {"type": "string", "minLength": 8},
+    "observable_acceptance": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "applicable_chips": {"type": "array", "contains": {"const": "STM32F103C8Tx"}},
+    "verification_level": {"type": "string"},
+    "validation_note": {"type": "string"},
+    "references": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "hardware_identity": {"$ref": "project-intake.schema.json#/$defs/HardwareIdentity"},
+    "execution_profile": {"$ref": "project-intake.schema.json#/$defs/ExecutionProfile"},
+    "test_contract": {"$ref": "project-intake.schema.json#/$defs/TestContract"},
+    "eda_profile": {"$ref": "project-intake.schema.json#/$defs/EdaProfile"},
+    "cloud_policy": {"$ref": "project-intake.schema.json#/$defs/CloudPolicy"}
+  },
+  "additionalProperties": true
+}

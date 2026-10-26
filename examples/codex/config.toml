@@ -1,0 +1,28 @@
+# 项目配置只声明只读子 Agent。可执行 MCP 的启动命令刻意放在用户级
+# ~/.codex/config.toml，并指向工作区外经哈希校验的受管运行时。
+[agents]
+max_threads = 6
+
+[agents.firmware_engineer]
+description = "Read-only STM32 HAL, CubeMX, build and debugging specialist."
+config_file = "agents/firmware_engineer.toml"
+
+[agents.hardware_engineer]
+description = "Read-only STM32 hardware, pin, power, wiring and safety specialist."
+config_file = "agents/hardware_engineer.toml"
+
+[agents.learning_assessor]
+description = "Read-only readiness, evidence, homework and mastery assessor."
+config_file = "agents/learning_assessor.toml"
+
+[agents.state_integrity]
+description = "Read-only event-ledger, schema, recovery and concurrency reviewer."
+config_file = "agents/state_integrity.toml"
+
+[agents.competition_researcher]
+description = "Read-only official competition rules, precedents and prior-art researcher."
+config_file = "agents/competition_researcher.toml"
+
+[agents.red_team_reviewer]
+description = "Read-only adversarial reviewer for routing, safety, evidence and integrity boundaries."
+config_file = "agents/red_team_reviewer.toml"

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/profile-manifest.schema.json",
+  "title": "STM32 AI Mentor profile manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "student_id",
+    "name",
+    "memory_mode",
+    "canonical_ledger",
+    "materialized_state",
+    "derived_views",
+    "event_namespace"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "student_id": { "type": "string" },
+    "name": { "type": "string" },
+    "memory_mode": { "const": "automatic_local" },
+    "canonical_ledger": { "const": "events/events.jsonl" },
+    "materialized_state": { "const": "state.json" },
+    "derived_views": { "type": "array", "items": { "type": "string" } },
+    "event_namespace": { "const": "learning.*" }
+  }
+}

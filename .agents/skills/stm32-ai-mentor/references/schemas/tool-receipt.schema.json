@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/stm32-ai-mentor/tool-receipt.schema.json",
+  "title": "ToolReceipt",
+  "description": "本地 MCP 返回的不可变工具收据；日志与产物只以 SHA-256 引用。",
+  "type": "object",
+  "required": ["receipt_id", "tool", "exit_code", "log_hash", "diagnostic_class", "tool_version", "timestamp", "artifact_hashes"],
+  "properties": {
+    "receipt_id": {"type": "string", "minLength": 1},
+    "tool": {"type": "string", "minLength": 1},
+    "exit_code": {"type": "integer"},
+    "log_hash": {"$ref": "#/$defs/sha256"},
+    "diagnostic_class": {"type": "string", "minLength": 1},
+    "tool_version": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "artifact_hashes": {"type": "array", "items": {"$ref": "#/$defs/sha256"}, "uniqueItems": true}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}},
+  "additionalProperties": false
+}
